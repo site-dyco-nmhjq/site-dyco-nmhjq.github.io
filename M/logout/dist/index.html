@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - logout</title>
+  <link rel='stylesheet' href='https://fir-ui-demo-84a6c.firebaseapp.com/style.css'>
+<link rel='stylesheet' href='https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css'>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>FirebaseUI Auth Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <div id="container">
+      <h3>FirebaseUI Demo</h3>
+      <div id="loading">Loading...</div>
+      <div id="loaded" class="hidden">
+        <div id="main">
+          <div id="user-signed-in" class="hidden">
+            <div id="user-info">
+              <div id="photo-container">
+                <img id="photo"></img>
+              </div>
+              <div id="name"></div>
+              <div id="email"></div>
+              <div class="clearfix"></div>
+            </div>
+            <p>
+              <button id="sign-out">Sign Out</button>
+              <button id="delete-account">Borrar Cuenta</button>
+            </p>
+          </div>
+          <div id="user-signed-out" class="hidden">
+            <h4>You are signed out.</h4>
+            <p>
+              <button id="sign-in-with-redirect">Sign In with Redirect</button>
+              <button id="sign-in-with-popup">Sign In with Popup</button>
+            </p>
+            <div id="firebaseui-spa">
+              <h5>Single Page Application mode:</h5>
+              <div id="firebaseui-container"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- partial -->
+  <script src='https://www.gstatic.com/firebasejs/3.5.0/firebase.js'></script>
+<script src='https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.js'></script>
+<script src='https://fir-ui-demo-84a6c.firebaseapp.com/app.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
