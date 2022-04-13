@@ -1,13 +1,13 @@
 //FIREBASE
 var firebaseConfig = {
-  aapiKey: "AIzaSyBWh4DZMVyn2JmAwFcAsSw5BaEvnXvrQQ0",
-  authDomain: "blogandre-chat.firebaseapp.com",
-  databaseURL: "https://blogandre-chat-default-rtdb.firebaseio.com",
-  projectId: "blogandre-chat",
-  storageBucket: "blogandre-chat.appspot.com",
-  messagingSenderId: "106193920955",
-  appId: "1:106193920955:web:135b16e7782d328ab99a9e",
-  measurementId: "G-L6FSFLNS9C"
+  apiKey: "AIzaSyDc7HW9pDHsx2Z4fhKRfjRaLkKQ5-YdZSE",
+  authDomain: "dycoursid-contact.firebaseapp.com",
+  databaseURL: "https://dycoursid-contact-default-rtdb.firebaseio.com",
+  projectId: "dycoursid-contact",
+  storageBucket: "dycoursid-contact.appspot.com",
+  messagingSenderId: "253387034234",
+  appId: "1:253387034234:web:06f2bdf8675dad6fde35c3",
+  measurementId: "G-S76DDK77SR"
 };
 
 //INIT FIREBASE

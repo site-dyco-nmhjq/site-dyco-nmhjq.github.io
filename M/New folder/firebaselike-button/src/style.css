@@ -1,0 +1,26 @@
+.liketxt {
+	margin-right: 15px;
+	margin-left: 5px;
+	text-align: center;
+}
+
+#like-button{
+	border-radius: 5px;
+	background-color: #FF69B4;
+  cursor: pointer;
+	margin: 5px;
+	color: white;
+	border:none;
+	text-align: center;
+	padding: auto;
+	font-size: 20px;
+	animation-name:content2; 
+	animation-duration: 2s; 
+	-webkit-animation-fill-mode: forwards; 
+	-moz-animation-fill-mode: forwards; 
+	animation-fill-mode: forwards;
+}
+
+#like-button:hover{
+	background-color: #fc92c7;
+}
