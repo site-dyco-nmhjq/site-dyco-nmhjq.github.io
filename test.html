@@ -1,12 +1,982 @@
-<!DOCTYPE html>
-<html>
-<body>
-    <p>Date/Time: <span id="datetime"></span></p>
+<style>
+    /*
+* Main File for form with multiple steppers
+Descritpion: 
+Author: Chris Shabani Muswamba
+*/
+* {
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+/* Body  */
+body {
+font-family: Arial, Helvetica, sans-serif "Poppins-Regular";
+font-size: 15px;
+color: rgb(26, 12, 12);
+margin: 0;
+background-color: rgb(13, 80, 80);
+}
+
+:focus {
+outline: none;
+}
+
+textarea {
+resize: none;
+}
+
+input,
+textarea,
+select {
+font-family: "Poppins-Regular";
+font-size: 15px;
+color: #fff;
+}
+.btn {
+padding-right: 20px;
+transition: 0.5;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+margin: 0;
+}
+
+ul {
+padding: 0;
+margin: 0;
+list-style: none;
+}
+
+a {
+text-decoration: none;
+}
+
+textarea {
+resize: none;
+}
+
+img {
+max-width: 100%;
+vertical-align: middle;
+}
+
+body {
+/* BACKGROUND IMAGE */
+background: url("https://cdn.pixabay.com/photo/2020/04/27/18/33/horse-5101069_960_720.jpg");
+background-size: cover;
+height: 100vh;
+opacity: 0.9;
+}
+
+#stepper-form {
+width: 100%;
+padding-left: 100px;
+padding-right: 100px;
+align-self: center;
+transition: all 0.3s ease;
+}
+
+.form-header {
+text-align: center;
+}
+
+#stepper-form a {
+font-family: "Poppins-Regular";
+color: #fff;
+display: inline-block;
+padding: 5px 15px;
+border-radius: 5px;
+background: #e4bd37;
+}
+
+h3 {
+font-family: "Poppins-SemiBold";
+font-size: 22px;
+text-transform: uppercase;
+margin-bottom: 46px;
+letter-spacing: 3px;
+margin-top: 19px;
+page-break-after: auto;
+}
+
+.left-card{
+padding: 20px;
+}
+#stepper-form {
+border: 1px solid #fff;
+border-radius: 10px;
+padding: 47px 57px 50px 50px;
+position: relative;
+background: rgba(255, 255, 255, 0.1);
+}
+
+#step-1, #step-2, #step-3 {
+transition: all 0.5s ease;
+}
+
+.form-control {
+height: 41px;
+border: 1px solid rgba(255, 255, 255, 0.4);
+background: none;
+border-radius: 5px;
+width: 100%;
+padding: 0 18px;
+background: rgba(255, 255, 255, 0.2);
+}
+
+.form-control:focus {
+box-shadow: 0px 0px 7px 0px rgba(255, 255, 255, 0.7);
+border: 1px solid #ceebf7;
+}
+
+.form-control::-webkit-input-placeholder {
+color: #fff;
+text-transform: uppercase;
+}
+
+.form-control::-moz-placeholder {
+color: #fff;
+text-transform: uppercase;
+}
+
+.form-control:-ms-input-placeholder {
+color: #fff;
+text-transform: uppercase;
+}
+
+.form-control:-moz-placeholder {
+color: #fff;
+text-transform: uppercase;
+}
+
+select.form-control {
+text-transform: uppercase;
+}
+
+.option {
+color: #999;
+}
+
+textarea.form-control {
+padding: 8px 0;
+background: url("../images/textarea-bg.png") no-repeat right bottom 3px;
+}
+
+.actions ul {
+display: flex;
+margin-top: 39px;
+justify-content: space-between;
+}
+/* Show inputs values li */
+.list-group-item{
+padding: 10px;
+}
+/* Social media icons */
+.icon-bar {
+position: fixed;
+top: 50%;
+-webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+
+.icon-bar a {
+display: block;
+text-align: center;
+padding: 20px;
+transition: all 0.3s ease;
+color: white;
+font-size: 15px;
+}
+
+.icon-bar a:hover {
+background-color: #000;
+}
+
+.facebook {
+background: #3B5998;
+color: white;
+}
+
+.twitter {
+background: #55ACEE;
+color: white;
+}
+
+.google {
+background: #dd4b39;
+color: white;
+}
+
+.linkedin {
+background: #007bb5;
+color: white;
+}
+
+.youtube {
+background: #bb0000;
+color: white;
+}
+/* Footer */
+footer {
+padding: 20px;
+padding-left: 0;
+border: solid 1px rgb(44, 48, 44);
+border-radius: 0;
+}
+
+@-webkit-keyframes hvr-icon-wobble-horizontal {
+16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+}
+
+33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+}
+
+49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+}
+
+66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+}
+
+83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+}
+
+100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+}
+
+@keyframes hvr-icon-wobble-horizontal {
+16.65% {
+    -webkit-transform: translateX(6px);
+    transform: translateX(6px);
+}
+
+33.3% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px);
+}
+
+49.95% {
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+}
+
+66.6% {
+    -webkit-transform: translateX(-2px);
+    transform: translateX(-2px);
+}
+
+83.25% {
+    -webkit-transform: translateX(1px);
+    transform: translateX(1px);
+}
+
+100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+}
+
+.checkbox-circle {
+display: flex;
+justify-content: space-between;
+}
+
+.checkbox-circle label {
+cursor: pointer;
+display: inline-block;
+padding-left: 23px;
+position: relative;
+margin-right: 0;
+width: auto;
+}
+
+.checkbox-circle input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+}
+
+.checkbox-circle input:checked~.checkmark:after {
+display: block;
+}
+
+.checkbox-circle .checkmark {
+position: absolute;
+top: 4px;
+left: 0;
+height: 15px;
+width: 15px;
+border-radius: 50%;
+border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.checkbox-circle .checkmark:after {
+content: "";
+top: 3px;
+left: 3px;
+width: 7px;
+height: 7px;
+border-radius: 50%;
+background: #fff;
+position: absolute;
+display: none;
+}
+
+@media (max-width: 1500px) {
+#stepper-form {
+    padding-top: 50px;
+    padding-bottom: 60px;
+    align-self: flex-start;
+}
+
+.container {
+    height: auto;
+}
+}
+
+@media (max-width: 1199px) {
+.main {
+    height: 100vh;
+    width: auto;
+}
+
+.image-holder {
+    align-self: center;
+}
+
+.image-holder img {
+    transform: translateY(40px);
+}
+
+#stepper-form {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-self: center;
+}
+}
+
+@media (max-width: 991px) {
+.main {
+    justify-content: center;
+}
+
+.image-holder {
+    display: none;
+}
+
+#stepper-form {
+    width: auto;
+}
+.col-md-6 {
+    width: 100%;
+}
+}
+
+@media (max-width: 767px) {
+body {
+    height: auto;
+}
+.col-md-6 {
+    width: 100%;
+}
+#footerImg img{
+    display: none;
+}
+
+.container {
+    height: auto;
+    padding: 30px 20px;
+}
+.icon-bar {
+    display: none;
+}
+
+#stepper-form,
+#wizard {
+    padding: 0;
+}
+
+h3 {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: block;
+}
+
+.form-group label {
+    margin-bottom: 29px;
+    display: block;
+}
+
+.form-group label,
+.form-group .form-holder {
+    width: 100%;
+}
+
+.checkbox-circle {
+    display: block;
+}
+}
+</style>
+
+<!-- Nav bar||| Note: we are using bootstrap for this template -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow p-3 mb-5 bg-info rounded">
+    <!-- Company brand with bootstap menu-->
+    <a class="navbar-brand" href="#">SMStudio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/Muswamba">Github</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More options
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">News site Theme</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Template</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<!-- /end nav -->
+<!-- Social media icons ### Sidebar -->
+<div id="icon" class="icon-bar">
+  <!-- Facebook -->
+  <p class="h5">Share</p>
+  <!-- Facebook -->
+  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+  <!-- Twitter -->
+  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+  <!-- Google -->
+  <a href="#" class="google"><i class="fa fa-google"></i></a>
+  <!-- Linkedin -->
+  <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+  <!-- Youtube -->
+  <a href="#" class="youtube"><i class="fa fa-youtube"></i></a>
+</div>
+<!-- Main container -->
+<div class="container main">
+   <!-- Add row for main container -->
+    <div class="row">
+        <!-- Form column (This is the right column ) -->
+        <div class="col-md-6 h-75 d-inline-block">
+            <!-- Add we give it ID of cardForm -->
+            <div id="cardForm" class="card shadow p-3 mb-5 bg-white rounded">
+                <!-- thanks message  -->
+                <h2 id="main-section" class="h2 text-center"></h2>
+                <!--Add progress bar (Bootstrap progress bar)  -->
+                <div class="progress">
+                    <!-- ID of prBar (By default width is 25%) -->
+                    <div id="prgBar" class="progress-bar" style="width:25%">5%</div>
+                </div>
+                <!-- Add form with ID of stepper-form (Using bootstrap class) -->
+                <form id="stepper-form" method="POST" class="was-validated">
+                    <!-- So in this part we are going to devid our form body in 3 sections (Note: you can add as  many sections you want) -->
+                    <section id="step-1"> 
+                        <!-- Section 1 contains: -->
+
+                        <!-- Title of the section -->
+                        <h5 class="h5 text-center">PERSONAL DETAILS</h5>
+                        <!-- Add a div with class of form-group -->
+                        <div class="form-group">
+                            <!-- Label: first name -->
+                            <label for="fname">Fisrt name:</label>
+                            <!-- Input class: form-control and ID form-fname and name: fname -->
+                            <input type="text" class="form-control" id="form-fname" placeholder="Enter first name"
+                                name="fname" required>
+                                <!-- And add a class: valid-feedback -->
+                            <div class="valid-feedback">Valid.</div>
+                            <!-- And a class: invalid-feedback (Bootstrap class) -->
+                            <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group">
+                            <!-- Lastname -->
+                            <label for="uname">Last name:</label>
+                            <input type="text" class="form-control" id="form-lname" placeholder="Enter last name"
+                                name="lname" required>
+                              <!-- And add a class: valid-feedback -->
+                              <div class="valid-feedback">Valid.</div>
+                              <!-- And a class: invalid-feedback (Bootstrap class) -->
+                              <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group">
+                            <!-- Eamil -->
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="form-email" placeholder="Enter email"
+                                name="email" required>
+                              <!-- And add a class: valid-feedback -->
+                              <div class="valid-feedback">Valid.</div>
+                              <!-- And a class: invalid-feedback (Bootstrap class) -->
+                              <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <!-- /End of section 1 -->
+
+                    </section>
+                    <!-- Section 2 and let give ID: section 2 -->
+                    <section id="step-2">
+                        <!-- Title and bootstrap class-->
+                        <h5 class="h5 text-center">ABOUT COMPANY</h5>
+                        <!-- div with class: form-group -->
+                        <div class="form-group">
+                            <!-- Label: company -->
+                            <label for="company">Company name:</label>
+                            <input type="text" class="form-control" id="form-company-name"
+                                placeholder="Enter Company name" name="company-name" required>
+                             <!-- And add a class: valid-feedback -->
+                             <div class="valid-feedback">Valid.</div>
+                             <!-- And a class: invalid-feedback (Bootstrap class) -->
+                             <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="branch">Branch:</label>
+                            <input type="text" class="form-control" id="form-branch" placeholder="Enter branch"
+                                name="branch" required>
+                              <!-- And add a class: valid-feedback -->
+                              <div class="valid-feedback">Valid.</div>
+                              <!-- And a class: invalid-feedback (Bootstrap class) -->
+                              <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Product:</label>
+                            <input type="text" class="form-control" id="form-product" placeholder="Enter product"
+                                name="product" required>
+                              <!-- And add a class: valid-feedback -->
+                              <div class="valid-feedback">Valid.</div>
+                              <!-- And a class: invalid-feedback (Bootstrap class) -->
+                              <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                       
+                    </section>
+                    <!-- /End of section 2 -->
+                    <section id="step-3">
+                        <!-- Section 3 -->
+                        <!-- Ttile  -->
+                        <h5 class="h5 text-center">ADDRESS DETAILS</h5>
+                        <!-- Div with a class: form-group -->
+                        <div class="form-group">
+                            <!-- Label: country -->
+                            <label for="country-name">Country:</label>
+                            <input type="text" class="form-control" id="form-country" placeholder="Enter country"
+                                name="country-name" required>
+                             <!-- And add a class: valid-feedback -->
+                             <div class="valid-feedback">Valid.</div>
+                             <!-- And a class: invalid-feedback (Bootstrap class) -->
+                             <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City:</label>
+                            <input type="text" class="form-control" id="form-city" placeholder="Enter city"
+                                name="city" required>
+                              <!-- And add a class: valid-feedback -->
+                              <div class="valid-feedback">Valid.</div>
+                              <!-- And a class: invalid-feedback (Bootstrap class) -->
+                              <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Phone:</label>
+                            <input type="phone" class="form-control" id="form-phone" placeholder="Enter password"
+                                name="pswd" required>
+                              <!-- And add a class: valid-feedback -->
+                              <div class="valid-feedback">Valid.</div>
+                              <!-- And a class: invalid-feedback (Bootstrap class) -->
+                              <div class="invalid-feedback">Please fill out this field.</div>
+                        </div>
+                    </section>
+                    <!-- /End of section 3 -->
+                    <!-- Button preview (Back) with ID: of prev-->
+                    <button id="prev" type="button" class="btn btn-primary">Previous</button>
+                    <!-- Button next and submit with ID: next -->
+                    <button id="next" type="button" class="btn btn-primary">Next</button>
+                </form>
+                <!-- /End -->
+            </div>
+        </div>
+        <!-- Column to show from data (class: col-md-6 ...) -->
+        <div class="col-md-6 h-75 d-inline-block">
+            <!-- Div class: card, md-3, shadow, md-5, bg-white rounded -->
+            <div class="card mb-3 shadow p-3 mb-5 bg-white rounded">
+                <!-- Image class: card-img-top (Image pixabay free ) -->
+                <img class="card-img-top"
+                    src="https://cdn.pixabay.com/photo/2015/06/08/15/11/typewriter-801921__340.jpg"
+                    alt="Card image cap">
+                    <!-- Div class: card-body -->
+                <div class="card-body">
+                    <!-- Title with class: card-title -->
+                    <h5 class="card-title">Preview Your Color</h5>
+                    <!-- Pagraph class: card-text -->
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                         Ipsam obcaecati accusamus fuga saepe laborum ullam esse sit,
+                          maxime, dolore, cum provident voluptatum
+                          maxime, dolore, cum provident voluptatum
+                          maxime, dolore, cum provident voluptatum
+                         
+
+                    </p>
+                    <!-- /End -->
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+                <!-- /End body -->
+            </div>
+            <!-- End column -->
+        </div>
+    </div>
+</div>
+<!-- Footer -->
+<footer class="page-footer font-small lighten-3 pt-4">
+
+   <!-- Footer Elements -->
+   <div class="container">
+
+       <!--Grid row-->
+       <div class="row">
+
+           <!--Grid column-->
+           <div class="col-lg-2 col-md-12 mb-4">
+
+               <!--Image-->
+               <div id="footerImg" class="view overlay z-depth-1-half shadow-sm p-3 mb-5 bg-white rounded">
+                   <img src="https://cdn.pixabay.com/photo/2015/07/31/11/45/library-869061__340.jpg"
+                       class="img-fluid" alt="">
+                   <a href="">
+                       <div class="mask rgba-white-light"></div>
+                   </a>
+               </div>
+
+           </div>
+           <!--Grid column-->
+
+           <!--Grid column-->
+           <div class="col-lg-2 col-md-6 mb-4">
+
+               <!--Image-->
+               <div id="footerImg" class="view overlay z-depth-1-half shadow-sm p-3 mb-5 bg-white rounded">
+                   <img src="https://cdn.pixabay.com/photo/2016/01/19/01/42/library-1147815__340.jpg"
+                       class="img-fluid" alt="">
+                   <a href="">
+                       <div class="mask rgba-white-light"></div>
+                   </a>
+               </div>
+
+           </div>
+           <!--Grid column-->
+
+           <!--Grid column-->
+           <div class="col-lg-2 col-md-6 mb-4">
+
+               <!--Image-->
+               <div id="footerImg" class="view overlay z-depth-1-half shadow-sm p-3 mb-5 bg-white rounded">
+                   <img src="https://cdn.pixabay.com/photo/2014/05/03/00/46/notebook-336634__340.jpg"
+                       class="img-fluid" alt="">
+                   <a href="">
+                       <div class="mask rgba-white-light"></div>
+                   </a>
+               </div>
+
+           </div>
+           <!--Grid column-->
+
+           <!--Grid column-->
+           <div class="col-lg-2 col-md-12 mb-4">
+
+               <!--Image-->
+               <div id="footerImg" class="view overlay z-depth-1-half shadow-sm p-3 mb-5 bg-white rounded">
+                   <img src="https://cdn.pixabay.com/photo/2017/09/18/11/14/school-2761394__340.jpg"
+                       class="img-fluid" alt="">
+                   <a href="">
+                       <div class="mask rgba-white-light"></div>
+                   </a>
+               </div>
+
+           </div>
+           <!--Grid column-->
+
+           <!--Grid column-->
+           <div class="col-lg-2 col-md-6 mb-4">
+
+               <!--Image-->
+               <div id="footerImg" class="view overlay z-depth-1-half shadow-sm p-3 mb-5 bg-white rounded">
+                   <img src="https://cdn.pixabay.com/photo/2017/02/09/16/59/student-2052868__340.jpg"
+                       class="img-fluid" alt="">
+                   <a href="">
+                       <div class="mask rgba-white-light"></div>
+                   </a>
+               </div>
+
+           </div>
+           <!--Grid column-->
+
+           <!--Grid column-->
+           <div class="col-lg-2 col-md-6 mb-4">
+
+               <!--Image-->
+               <div id="footerImg" class="view overlay z-depth-1-half shadow-sm p-3 mb-5 bg-white rounded">
+                   <img src="https://cdn.pixabay.com/photo/2012/02/22/20/07/book-15584__340.jpg"
+                       class="img-fluid" alt="">
+                   <a href="">
+                       <div class="mask rgba-white-light"></div>
+                   </a>
+               </div>
+
+           </div>
+           <!--Grid column-->
+
+       </div>
+       <!--Grid row-->
+
+   </div>
+   <!-- Footer Elements -->
+
+   <!-- Copyright -->
+   <div class="footer-copyright text-center py-3">© 2020 Copyright:
+       <a href="https://github.com/Muswamba"> C.SHABANI MUSWAMBA </a>
+   </div>
+   <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <script>
-var dt = new Date();
-document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"."+ (("0"+(dt.getMonth()+1)).slice(-2)) +"."+ (dt.getFullYear()) +" "+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
-</script>
+//Get sections (steps)
+var step1 = document.getElementById("step-1");
+var step2 = document.getElementById("step-2");
+var step3 = document.getElementById("step-3");
+// Default style step display: block
+step1.style.display = "block";
+// step2 display:  none 
+step2.style.display = "none";
+// Step 3 display: none 
+step3.style.display = "none";
 
-</body>
-</html>
+//Inptus 
+var fname = document.getElementById("form-fname");
+var lname = document.getElementById("form-lname");
+var email = document.getElementById("form-email");
+var company = document.getElementById("form-company-name");
+var branch = document.getElementById("form-branch");
+var product = document.getElementById("form-product");
+var country = document.getElementById("form-country");
+var city = document.getElementById("form-city");
+var phone = document.getElementById('form-phone');
+
+// Define form and prevent default submittion 
+let form = document.getElementById("stepper-form").addEventListener("click", (e) => {
+// Prevent default submittion
+ e.preventDefault();
+//On click we call functions next and prev 
+//  Next function (next button)
+ next;
+//Preview or back (button)
+ prev;
+});
+
+//Progress bar (The progress by default 25%, so when section is completed += 25% width and so on.)
+var progressBar = document.getElementById("prgBar");
+// Default color is orange (on 50% width color will change, 75% and 99 %)
+progressBar.style.backgroundColor = "orange";
+
+//Next(Button) step function. (When this function is excute, we change the style for current sectino to none, the next section to be block) 
+var next = document.getElementById("next");
+
+//On click we change the style 
+next.addEventListener("click", () => {
+
+//Check for step to be displayed 
+if (step1.style.display === "block" && step2.style.display === "none" && step3.style.display === "none") {
+    //Check for displayed step
+  step2.style.display = "block";
+  //Set progress bar width
+  progressBar.style.width = "50%";
+  //Set progress bar color to blue
+  progressBar.style.backgroundColor = "rgb(11, 48, 148)";
+
+  //Change the innerHTML text = 50%
+   progressBar.innerHTML = "50%";
+
+  //And set style to none
+  step1.style.display = "none";
+  //And style to none
+  step3.style.display = "none";
+
+  //Check for next (Section) to displayed
+}else if (step2.style.display === "block" && step3.style.display === "none" && step1.style.display === "none") {
+    // Add style display none for step 2 (section)
+    step2.style.display = "none";
+    // Add style display: none 
+    step1.style.display = "none";
+    //And add style display: block
+    step3.style.display = "block";
+    //Set progress bar width
+    progressBar.style.width = "98%";
+    //Set progress bar color 
+    progressBar.style.backgroundColor = "lightgreen";
+    // Set progress bar innerHTML text to = 98%
+    progressBar.innerHTML = "98%";
+    
+    // Confirm if all steps are completed and then check if inputs are empty
+} else if (step3.style.display === "block" && step2.style.display === "none" && step1.style.display === "none") {
+    //Set progress bar width
+    progressBar.style.width = "100%";
+    //And change the progress bar color
+    progressBar.style.backgroundColor = "green";
+    // Change the progress innnerHTML = 100%
+    progressBar.innerHTML = "100%";
+
+    let x = document.getElementById("stepper-form");
+
+    //Check input have data
+    validData(fname, lname, email);
+    validData(company, branch, product);
+    validData(country, city, phone);
+    
+    //Change the innerHTML text = submit
+    next.innerHTML = "Submit";
+    
+    // And confirm again if all inputs are not empty and then submit
+    if (fname.value !== "" && lname.value !== "" && email.value !== "" && company.value !== "" && branch.value !== "" && product.value !=="" && country.value !=="" && city.value !== "" && phone.value !== "") {
+        //form display none (Show the list of ipnuts)
+        let stepperForm = document.getElementById("stepper-form").style.display = "none";
+        let title = document.getElementById("main-section").innerHTML = 'Thank You For Submittion!';
+        
+        // Inputs display none 
+        progressBar.style.display = "none";
+        // Create a ul
+        let ul = document.createElement('ul');
+        ul.className = "list-group list-group-flush";
+        // Create a list 
+        let item1 = document.createElement('li');
+        let item2 = document.createElement("li");
+        let item3 = document.createElement("li");
+        let item4 = document.createElement("li");
+        let item5 = document.createElement("li");
+        let item6 = document.createElement("li");
+        let item7 = document.createElement("li");
+        let item8 = document.createElement("li");
+        let item9 = document.createElement("li");
+        // Add class 
+        item1.className = "list-group-item";
+        item2.className = "list-group-item";
+        item3.className = "list-group-item";
+        item4.className = "list-group-item";
+        item5.className = "list-group-item";
+        item6.className = "list-group-item";
+        item7.className = "list-group-item";
+        item8.className = "list-group-item";
+        item9.className = "list-group-item";
+        //Append text 
+        item1.textContent = `First: ${fname.value}`;
+        item2.textContent = `Last name: ${lname.value}`;
+        item3.textContent = `Email: ${email.value}`;
+        item4.textContent = `Company: ${company.value}`;
+        item5.textContent = `Branch: ${branch.value}`;
+        item6.textContent = `Product: ${product.value}`;
+        item7.textContent = `Country: ${country.value}`;
+        item8.textContent = `City: ${city.value}`;
+        item9.textContent = `Phone: ${phone.value}`;
+        
+        // Append
+        ul.append(item1);
+        ul.append(item2)
+        ul.append(item3);
+        ul.append(item4);
+        ul.append(item5);
+        ul.append(item6);
+        ul.append(item7);
+        ul.append(item8);
+        ul.append(item9);
+        document.getElementById("cardForm").append(ul);
+        return false;
+    } else{
+        //Disable submit btn
+        next.disabled = true;
+        //Set progress bar width
+        progressBar.style.backgroundColor = "red";
+        progressBar.innerHTML = "No data found!";
+    }
+    return false;
+} 
+return false;
+});
+
+let prev = document.getElementById("prev").addEventListener("click", () => {
+//Check for active step and add to it a style.display none
+if (step3.style.display === "block" && step2.style.display === "none" && step1.style.display === "none") {
+  step1.style.display = "none";
+  step2.style.display = "block";
+  next.innerHTML = "Next";
+  next.disabled = false;
+  //Set progress bar width
+  progressBar.style.backgroundColor = "lightgreen";
+  //Set progress bar 
+  progressBar.innerHTML = "50%";
+  progressBar.style.width = "50%";
+  step3.style.display = "none";
+}else if (step3.style.display === "none" && step2.style.display === "block" && step1.style.display === "none") {
+    step1.style.display = "block";
+    step2.style.display = "none";
+    step3.style.display = "none";
+    //Set progress bar width
+  progressBar.style.backgroundColor = "orange";
+  //Set progress bar 
+  progressBar.innerHTML = "25%";
+  progressBar.style.width = "25%";
+} 
+});
+
+/**
+* Function validation
+* this take 3 parameters 
+* and check if is empty 
+*/
+function validData (a,b,c){
+// 
+if (a.value !== "" && b.value !== "" && c.value !== "") {
+   //Add some code here
+   next.disabled;
+} return true;
+}
+</script>

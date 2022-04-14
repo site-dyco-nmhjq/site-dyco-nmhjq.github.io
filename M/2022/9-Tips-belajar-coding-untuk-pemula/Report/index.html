@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Multi Step Form | CodingNepal</title>
+    <link rel="stylesheet" href="../../../../assets/css/Report/style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="progress-bar">
+        <div class="step">
+          <p>Pengirim</p>
+          <div class="bullet">
+            <span>1</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+          <p>Contact</p>
+          <div class="bullet">
+            <span>2</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+        <div class="step">
+          <p>Birth</p>
+          <div class="bullet">
+            <span>3</span>
+          </div>
+          <div class="check fas fa-check"></div>
+        </div>
+
+      </div>
+      <div class="form-outer">
+        <form action="#">
+          <div class="page slide-page">
+            <div class="title">Pengirim Info:</div>
+            <div class="field">
+              <input type="email" placeholder="Your Email">
+            </div>
+            <div class="field">
+              <button class="firstNext next">Next</button>
+            </div>
+          </div>
+
+          <div class="page">
+            <div class="title">Contact Info:</div>
+            <div class="field">
+              <select>
+                <option disabled>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field btns">
+              <button class="prev-1 prev">Previous</button>
+              <button class="next-1 next">Next</button>
+            </div>
+          </div>
+
+          <div class="page">
+            <div class="title">Date of Birth:</div>
+            <div class="field">
+              <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+
+            <div class="field btns" style="padding-top: 10px;">
+              <button class="prev-2 prev">Previous</button>
+              <button class="next-2 next">Next</button>
+            </div>
+          </div>
+
+          <div class="page">
+            <div class="field btns">
+              <button class="submit">Submit</button>
+            </div>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+    <script src="../../../../assets/js/Report/script.js"></script>
+
+  </body>
+</html>
