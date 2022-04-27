@@ -837,6 +837,11 @@ section {
 /*--------------------------------------------------------------
 # Cource Details
 --------------------------------------------------------------*/
+
+.img-fluid {
+  pointer-events: none;
+}
+
 .course-details h3 {
   font-size: 24px;
   margin: 30px 0 15px 0;
@@ -1407,3 +1412,32 @@ section {
   margin-bottom: 10px;
   display: none;
 }
+
+/*--------------------------------------------------------------
+# Table Code
+--------------------------------------------------------------*/
+table, th, td {
+  border:1px solid black;
+  color: white;
+}
+
+.table {
+  background-color: gray;
+  width: auto;
+  height: auto;
+
+}
+
+/*--------------------------------------------------------------
+# Share Pages
+--------------------------------------------------------------*/
+#floating-share-buttons{list-style-type:none;margin:0;padding:0;font-size:0}
+#floating-share-buttons li{}
+#floating-share-buttons a{color:#fff;background-color:#00d39e;text-decoration:none;font-size:14px;border-radius: 0px 5px 5px 0px;
+    margin-bottom: 5px;}
+#floating-share-buttons a.share-telegram:hover{background-color:#229ED9}
+#floating-share-buttons a.share-link:hover{background-color:#FF0000}
+#floating-share-buttons a.share-whatsapps:hover{background-color:#3fbb50}
+#floating-share-buttons a.share-pinterest:hover{background-color:#ca2127}
+@media (min-width:360px){ul#floating-share-buttons{position:fixed;top:50%;transform:translateY(-50%);min-height:100px;padding:0}ul#floating-share-buttons a{width:2.8rem;height:2.8rem;align-items:center;display:inline-flex;justify-content:center;transition:width 0.5s}ul#floating-share-buttons a:hover{width:4.5rem}#floating-share-buttons a.share-whatsapp{display:none}}
+@media (max-width:360px){ul#floating-share-buttons{display:none!important;}}
